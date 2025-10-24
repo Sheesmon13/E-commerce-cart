@@ -13,12 +13,12 @@ const toggleCart = () =>{
 };
 
   return (
-    <div>
+    <Provider store ={store}>
       <Header onToggleCart = {toggleCart}/>
       <Productgrid />
       <CartSidebar isOpen = {isCartOpen} onClose={ () => setIsCartOpen(false)} />
       <CartItem />
-    </div>
+    </Provider>
   )
 }
 

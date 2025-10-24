@@ -1,7 +1,9 @@
 import React from 'react'
 import ProductCard from './ProductCard'
+import {products} from "../data/products"
 
 const Productgrid = () => {
+  console.log("products");
   return (
     <div className='py-12'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -10,7 +12,9 @@ const Productgrid = () => {
                 <p className='text-lg text-gray-600'>Discover our excluisve range of products designed to enhance your lifestyle.</p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-                <ProductCard />
+                {products.map(product => (
+                 <ProductCard  key={product.id} product={product}/>
+                ))}
             </div>
         </div>
     </div>
