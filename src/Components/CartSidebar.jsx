@@ -33,6 +33,7 @@ const CartSidebar = ({isOpen, onClose}) => {
             </p>
           </div>
         </div>
+        
         <div className="border-t border-gray-200 p-6 bg-gray-50">
           <div className="flex justify-between items-center mb-4">
             <span className="text-lg font-semibold text-gray-900">Total</span>

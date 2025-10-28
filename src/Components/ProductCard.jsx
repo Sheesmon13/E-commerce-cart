@@ -1,8 +1,15 @@
 import { Star } from "lucide-react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Store/CartSlice";
 
 const ProductCard = ({ product }) => {
-  const rederStart = (rating) => {
+
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) =>{
+    dispatch(addToCart(product))
+  };
+  const renderStar = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
@@ -39,17 +46,17 @@ const ProductCard = ({ product }) => {
         </p>
         <div className="flex items-center mb-4">
           <div className="flex items-center">
-            {rederStart(product.category)}
+            {renderStar(product.category)}
           </div>
           <span>
-            {product.rating} ({product.review}reviews)
+            {product.rating} ({product.review} reviews)
             </span>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-gray-900">
-            {product.price.toFixed()}
+            ${product.price.toFixed(2)}
           </span>
-          <button className="group/btn bg-gray-200 text-gray-900 px-4 py-2 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center space-x-2 cursor-pointer">
+          <button onClick={() =>  handleAddToCart(product)} className="group/btn bg-gray-200 text-gray-900 px-4 py-2 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center space-x-2 cursor-pointer">
             <span className="font-medium">Add to Cart</span>
           </button>
         </div>

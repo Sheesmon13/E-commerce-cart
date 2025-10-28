@@ -7,7 +7,7 @@ const initialState ={
 const cartSlice = createSlice({
     name : 'cart',
     initialState,
-    reducer: {
+    reducers: {
         addToCart:(state, action) =>{
             const existingItem = state.items.find(
                 (item) => item.id === action.payload.id
@@ -15,11 +15,11 @@ const cartSlice = createSlice({
             if(existingItem){
                 existingItem.quantity += 1;
             }else{
-                state.item.push({...action.payload, quantity: 1})
+                state.items.push({...action.payload, quantity: 1})
             }
         }
     }
 });
 
-export const {addtoCart} = cartSlice.action
+export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;
